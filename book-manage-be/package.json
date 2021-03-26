@@ -1,0 +1,18 @@
+{
+  "name": "book-manage-be",
+  "version": "1.0.0",
+  "description": "图书管理",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "图书管理"
+  ],
+  "author": "baozheny",
+  "license": "ISC",
+  "devDependencies": {
+    "koa": "^2.13.1",
+    "mongoose": "^5.12.2"
+  }
+}

@@ -1,0 +1,6 @@
+# 如果在向远端推送内容的时候，将我们项目中的内容都推上去，但是
+# 我们已经有package 描述依赖项了，并不需要将node_modules 放入
+# 在向远端上传文件是，忽略一部分不需要添加的内容
+book-manage/node_modules
+book-manage-be/node_modules
+
