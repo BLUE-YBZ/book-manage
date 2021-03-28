@@ -1,0 +1,41 @@
+.auth{
+    margin-top: 100px;
+    background-image: url('https://gw.alipayobjects.com/zos/rmsportal/TVYTbAXWheQpRcWDaDMu.svg');
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center 40px;
+    .titleinfo{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 30px;
+        img{
+            margin-right:20px;
+            width:70px;
+            height: 60px;
+
+        }
+    }
+    .form{
+        margin: 0 auto;
+        width: 400px;
+        height: 285px;
+
+
+        .item{
+            margin: 0 0 12px 0;
+        }
+        .ant-btn{
+            width: 100%;
+        }
+        .ant-tabs {
+            width:400px;
+            
+        }
+    }
+}
