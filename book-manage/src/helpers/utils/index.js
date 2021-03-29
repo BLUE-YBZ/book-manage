@@ -25,3 +25,19 @@ export const result = (response, authShowErrorMsg = true) => {
         },
     };
 };
+// 完成一个深拷贝
+export const clone = (obj) => {
+    return JSON.parse(JSON.stringify(obj));
+};
+// 将时间戳格式化为正常的数据值
+export const formatTimestamp = (ts) => {
+    const date = new Date(Number(ts));// 将ts时间戳转成数字
+    const YYY = date.getFullYear();
+    const MM = date.getMonth() + 1;// 这个获取的月计数是从零开始的需要加一
+    const DD = date.getDate();
+
+    const hh = date.getHours();
+    const mm = date.getMinutes();
+    const ss = date.getSeconds();
+    return `${YYY}/${MM}/${DD} ${hh}:${mm}:${ss}`;
+}

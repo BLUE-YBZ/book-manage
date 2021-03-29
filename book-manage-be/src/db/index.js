@@ -1,7 +1,7 @@
 require('./Schemas/User');
 require('./Schemas/InviteCode');// require 引入就相当于将其中的内容进行执行
+require('./Schemas/Book');
 const mongoose = require('mongoose');
-
 
 const connect = () => {
     return new Promise((resolve) => {
