@@ -13,9 +13,15 @@
           <a-input v-model:value="addForm.author" />
         </a-form-item>
       </a-form>
+      
       <a-form :label-col="{ span: 5 }" :wrapper-col="{ span: 16 }">
         <a-form-item label="出版日期">
           <a-date-picker v-model:value="addForm.publishDate" />
+        </a-form-item>
+      </a-form>
+      <a-form :label-col="{ span: 5 }" :wrapper-col="{ span: 16 }">
+        <a-form-item label="库存数量">
+          <a-input v-model:value="addForm.count" />
         </a-form-item>
       </a-form>
       <a-form :label-col="{ span: 5 }" :wrapper-col="{ span: 16 }">
@@ -30,6 +36,7 @@
           <span>&nbsp;&nbsp;元</span>
         </a-form-item>
       </a-form>
+      
     </a-modal>
   </div>
 </template>

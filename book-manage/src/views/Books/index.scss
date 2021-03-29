@@ -1,10 +1,15 @@
 .booksInfo{
     .search{
-        width: 100px;
-        display: inline-block;
+        width: 200px;
+        display: flex;
+        a{
+            width:40px;
+            margin-left: 15px;
+            line-height: 32px;
+        }
     }
     .btn{
-        display: inline;
+        display: flex;
     }
     
 }

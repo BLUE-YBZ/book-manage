@@ -6,8 +6,9 @@ const BookSchema = new mongoose.Schema({
     name: String,
     price: Number,
     author: String,
-    publishDate: String,
+    publishDate: String, //出版日期
     classify: String,
+    count: Number, // 库存
     meta: getMate(),
 
 });
