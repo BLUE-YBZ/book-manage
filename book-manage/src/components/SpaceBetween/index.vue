@@ -5,11 +5,9 @@
 </template>
 <script>
 </script>
-<style lang='scss' scope>
+<style lang='scss' scoped>
     .space-between {
         display: flex;
         justify-content: space-between;
-        flex-direction: row;
-        
     }
 </style>

@@ -141,5 +141,43 @@ router.post('/update/count', async(ctx) => {
         msg: '操作成功',
     };
 });
+// 编辑书籍信息
+router.post('/update', async (ctx) => {
+      const {
+        id,
+        ...others
+      } = ctx.request.body;
+    
+      const one = await Book.findOne({
+        _id: id,
+      }).exec();
+    
+      // 没有找到书
+      if (!one) {
+        ctx.body = {
+          msg: '没有找到书籍',
+          code: 0,
+        }
+        return;
+      }
+    
+      const newQuery = {};
+    
+      Object.entries(others).forEach(([key, value]) => {
+        if (value) {
+          newQuery[key] = value;
+        }
+      });
+    
+      Object.assign(one, newQuery);
+    
+      const res = await one.save();
+    
+      ctx.body = {
+        data: res,
+        code: 1,
+        msg: '保存成功',
+      };
+    });
 
 module.exports = router;

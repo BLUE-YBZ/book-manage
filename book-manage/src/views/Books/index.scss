@@ -1,15 +1,28 @@
 .booksInfo{
-    .search{
-        width: 200px;
+    
+    .between{
+        .search{
+            width: 200px;
+            display: inline-block;
+            a{
+                width:40px;
+                margin-left: 15px;
+                line-height: 32px;
+            }
+        }
+       .btn{
+           float:right;
+       }
+    }
+    .pages{
+        width: 100%;
+        margin-top: 24px;
         display: flex;
-        a{
-            width:40px;
-            margin-left: 15px;
-            line-height: 32px;
+        justify-content: space-between;
+        .pageItem{
+            width: auto;
         }
     }
-    .btn{
-        display: flex;
-    }
+    
     
 }

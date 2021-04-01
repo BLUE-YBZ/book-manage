@@ -10,7 +10,8 @@
       </div>
       <div class="right">
         <span>你好，admin</span>
-        <span class="btnspan"> 退出</span>
+        <div class="btnspan"> 退出 </div>
+        
       </div>
     </div>
     <div class="holderone"></div>

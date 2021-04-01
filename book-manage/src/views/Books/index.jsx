@@ -1,11 +1,13 @@
 import { defineComponent, ref, onMounted, createVNode } from 'vue';
 import addOne from './AddOne/index.vue';
+import upDate from './Update/index.vue';
 import { book } from '../../service/index'
 import { result, formatTimestamp } from '../../helpers/utils/index';
 import { message, Modal, Input } from 'ant-design-vue';
 export default defineComponent({
     components: {
         'add-one': addOne,
+        'up-date': upDate,
     },
     setup() {
 
@@ -49,18 +51,9 @@ export default defineComponent({
 
 
         ];
-        const data = [
-            {
-                key: '1',
-                ID: '02185036',
-                name: '刘佳欣',
-            },
-            {
-                key: '2',
-                ID: '02185036',
-                name: '刘佳欣',
-            }
-        ];
+        const showUpdateModal = ref(false);
+        const curEditBook = ref({});
+        const data = [];
         const show = ref(false);
         const list = ref([]);
         const total = ref(0);
@@ -71,7 +64,7 @@ export default defineComponent({
         const getList =async () => {
             const res = await book.list({
                 page: curPage.value,
-                size: 3,
+                size: 4,
                 keyword: keyword.value,
             });
             
@@ -118,7 +111,7 @@ export default defineComponent({
                 getList();
             });
         };
-
+        // 出入库数据改变
         const updateCount = (type, record) => {
             let word = "增加";
             if(type == 'OUT_COUNT') {
@@ -166,6 +159,14 @@ export default defineComponent({
 
             });
         };
+        // 编辑操作页面的显示
+        const update = ({record}) => {
+            showUpdateModal.value = true;
+            curEditBook.value = record;
+        };
+        const updateCurBook = (newData) => {
+            Object.assign(curEditBook.value, newData);
+        }
         return {
             // 返回模板上会用到的方法和数据
             columns,
@@ -181,7 +182,11 @@ export default defineComponent({
             backAll,
             isSearch,
             remove,
-            updateCount
+            updateCount,
+            showUpdateModal,
+            update,
+            curEditBook,
+            updateCurBook,
         };
-    }
+    },
 });
