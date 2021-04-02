@@ -3,3 +3,4 @@
 // 将从 auth 中导出的内容聚合到 auth 对象中
 export * as auth from './auth';
 export * as book from './book';
+export * as user from './user'

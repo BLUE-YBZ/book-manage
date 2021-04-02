@@ -7,7 +7,7 @@
       <div class="between">
         <div class="search">
           <a-input-search
-            placeholder="根据书名搜索"
+            placeholder="根据账户搜索"
             enter-button
             v-model:value="keyword"
             @search="onSearch"

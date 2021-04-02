@@ -1,12 +1,12 @@
-.booksInfo{
-    
+.userManage{
     .between{
         .search{
             position: relative;
             width: 200px;
             display: inline-block;
             a{
-                position:absolute;
+                position: absolute;
+                top: 0;
                 width:40px;
                 margin-left: 15px;
                 line-height: 32px;
@@ -15,6 +15,9 @@
        .btn{
            float:right;
        }
+    }
+    h2{
+        font-weight: 600;
     }
     .pages{
         width: 100%;
@@ -25,6 +28,4 @@
             width: auto;
         }
     }
-    
-    
 }

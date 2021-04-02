@@ -7,5 +7,6 @@ const userschema = new mongoose.Schema({
     meta: getMate(),
 
 });
+
 // 注册一个模型
 mongoose.model('User', userschema);

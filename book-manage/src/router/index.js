@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
 
 const routes = [
+  // 注册、登录路由
   {
     path: '/auth',
     name: 'Auth',
@@ -15,6 +16,11 @@ const routes = [
         path: '/books',
         name: 'Books',
         component: () => import('../views/Books/index.vue'),
+      },
+      {
+        path: '/user',
+        name: 'User',
+        component: () => import('../views/Users/index.vue'),
       }
     ]
   },
