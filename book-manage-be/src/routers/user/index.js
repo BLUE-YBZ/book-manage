@@ -4,6 +4,7 @@ const { v4: uuidv4 } = require('uuid');
 const config = require('../../project.config');
 
 const User = mongoose.model('User');
+const Character = mongoose.model('Character');
 const router = new Router({
     prefix: '/user',
 });
@@ -64,12 +65,24 @@ router.post('/add', async (ctx) => {
     const {
         account,
         password = '123456',
+        character,
     } = ctx.request.body;
 
     const user = new User({
         account,
         password,
+        character
     });
+    const char = await Character.findOne({
+        _id: character,
+    });
+    if(!char) {
+        ctx.body = {
+            msg: '出错了！',
+            code: 0,
+        };
+        return;
+    }
     const res = await user.save();
     ctx.body = {
         data: res,
@@ -105,4 +118,39 @@ router.post('/reset/password', async (ctx) => {
     };
 });
 // 
+router.post('/update/character',async (ctx) => {
+    const {
+        character,
+        userid,
+    } = ctx.request.body;
+    // 分别查询了 角色集合和用户集合
+    const char = await Character.findOne({
+        _id: character,
+    }).exec();
+    if(!char) {
+        ctx.body = {
+            msg: '出错了',
+            code: 0,
+        };
+        return;
+    };
+    const user = await User.findOne({
+        _id: userid,
+    }).exec();
+    if(!user) {
+        ctx.body = {
+            msg: '出错了',
+            code: 0,
+        };
+        return;
+    };
+    user.character = character;
+    const res = await user.save();
+    ctx.body = {
+        data: res,
+        code: 1,
+        msg: '修改成功',
+    };
+
+});
 module.exports = router;

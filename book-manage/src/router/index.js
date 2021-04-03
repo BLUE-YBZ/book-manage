@@ -1,5 +1,6 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
-
+import { character } from '@/service';
+import store from '../store';
 const routes = [
   // 注册、登录路由
   {
@@ -29,6 +30,19 @@ const routes = [
 const router = createRouter({
   history: createWebHashHistory(),
   routes,
+});
+// to表示到哪个页面去，from从哪个页面来，next可以进入到下一步了
+router.beforeEach((to, from, next) => {
+  // if(!window.characterInfo) {
+  //   const res = await character.list();
+  //   window.characterInfo = res.data;
+  // }
+  // next();
+  if(!window.characterInfo) {
+    store.dispatch('getCharacterInfo');
+  }
+  next();
+
 });
 
 export default router;
