@@ -2,8 +2,7 @@ const Router = require('@koa/router');
 const mongoose = require('mongoose');
 const { getBody } = require('../../helpers/utils/index');
 const jwt = require('jsonwebtoken');
-const { getMate } = require('../../db/helpers');
-const { v4: uuidv4 } = require('uuid');
+const config = require('../../project.config')
 
 const User = mongoose.model('User');
 const InviteCode = mongoose.model('InviteCode');
@@ -95,6 +94,8 @@ router.post('/login', async (ctx) => {
 
     const user = {
         account: one.account,
+        // 区别不同权限,返回给前端的数据
+        character: one.character,
         _id: one._id,
     };
     // 密码
@@ -105,7 +106,7 @@ router.post('/login', async (ctx) => {
             data: {
                 user,
                 // 密码不要放在传递数据处
-                token: jwt.sign(user,'book-mgr'),
+                token: jwt.sign(user,config.JWT_SECRET),
             },
         };
         return;

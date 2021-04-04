@@ -16,7 +16,9 @@
     </div>
     <div class="holderone"></div>
     <div class="content">
-      <div class="left">菜单栏</div>
+      <div class="left">
+        <nav-info></nav-info>
+      </div>
       <div class="right">
         <router-view/>
       </div>

@@ -37,7 +37,7 @@
             <a href="#">忘记密码</a>
           </div>
           <div class="item itembtn">
-            <a-button type="primary" size="large" @click="login()">
+            <a-button type="primary" size="large" @click="login">
               登陆
             </a-button>
           </div>

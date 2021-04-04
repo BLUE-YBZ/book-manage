@@ -2,7 +2,7 @@ const Router = require('@koa/router');
 const mongoose = require('mongoose');
 const { v4: uuidv4 } = require('uuid');
 const config = require('../../project.config');
-
+const { verify,getToken } =require('../../helpers/token/index')
 const User = mongoose.model('User');
 const Character = mongoose.model('Character');
 const router = new Router({
@@ -153,4 +153,13 @@ router.post('/update/character',async (ctx) => {
     };
 
 });
+
+router.get('/info',async (ctx) => {
+    ctx.body = {
+        // verify promise 形式的，进行的是异步过程
+        data:await verify(getToken(ctx)),
+        code: 1,
+        msg: '获取成功',
+    }
+}); 
 module.exports = router;

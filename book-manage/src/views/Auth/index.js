@@ -3,6 +3,10 @@ import { UserOutlined, LockOutlined, MailOutlined } from '@ant-design/icons-vue'
 import { auth } from '../../service/index';
 import { result } from '../../helpers/utils/index';
 import { message } from 'ant-design-vue';
+import { getCharacterInfoById } from '@/helpers/character';
+import store from '@/store';
+import {useRouter } from 'vue-router';
+import { setToken } from '../../helpers/token';
 
 // defineComponent 是为了帮助我们编写代码时给与提示
 export default defineComponent({
@@ -12,6 +16,7 @@ export default defineComponent({
     MailOutlined,
   },
   setup() {
+    const router = new useRouter();
     // 注册 表单数据
     const regForm = reactive({
       // reactive 可以将其声明的对象，看成是响应式的数据
@@ -40,8 +45,8 @@ export default defineComponent({
       // 在服务端设置的 code=0 表示失败，code=1 为成功
       // 所有的提示信息都由服务端来提供
       result(res).
-      success((data) => {
-        message.success(data.msg);
+      success(({msg}) => {
+        message.success(msg);
       });
     };
     // 登录表单
@@ -61,9 +66,15 @@ export default defineComponent({
         return;
       }
       const res = await auth.login(loginForm.account, loginForm.password);
+      console.log(res);
       result(res)
-      .success((data) => {
-        message.success(data.msg);
+      .success(({msg, data:{user, token}}) => {
+        message.success(msg);
+        // 调用store中的方法
+        store.commit('setUserInfo',user);
+        store.commit('setUserCharacter',getCharacterInfoById(user.character));
+        setToken(token);
+        router.replace('/books'); // 这样的进入方式是没有办法回退页面的
       });
     };
     return {

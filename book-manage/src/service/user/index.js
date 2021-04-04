@@ -40,3 +40,7 @@ export const editCharacter = (character, userid) => {
     }
   );
 };
+
+export const info = () => {
+    return axios.get('http://localhost:3000/user/info');
+};

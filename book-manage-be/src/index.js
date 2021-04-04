@@ -5,6 +5,7 @@ const koaBody = require('koa-body');
 const cors = require('@koa/cors');
 const { connect } = require('./db');
 const registerRoutes = require('./routers/index');
+const { middleware: koaJwtMiddleware,catchTokenError } = require('./helpers/token'); 
 
 const app = new Koa();
 connect().then(() => {
@@ -12,7 +13,8 @@ connect().then(() => {
     app.use(cors());
     // 确保请求在连接成功后执行，避免漏掉请求
     app.use(koaBody());
-    
+    app.use(catchTokenError);// 在koaJwt之前
+    koaJwtMiddleware(app);
     registerRoutes(app);
     
     // 开启一个 http 服务

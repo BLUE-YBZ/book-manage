@@ -15,3 +15,9 @@ export const getCharacterInfoById = (id) => {
         title: '未知角色',
     };
 };
+// 判断是否是管理员
+export const isAdmin = () => {
+    const uc = store.state.userCharacter;
+    return uc.name === 'admin';
+    // console.log(uc);
+} ;

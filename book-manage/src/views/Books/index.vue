@@ -14,7 +14,7 @@
           />
           <a href="javascript:;" @click="backAll" v-show="isSearch">返回</a>
         </div>
-        <a-button class="btn" @click="show = true">添加一条</a-button>
+        <a-button v-only-admin class="btn" @click="show = true">添加一条</a-button>
       </div>
 
       <a-divider />
@@ -32,8 +32,8 @@
         </template>
 
         <template #action="record">
-          <a href="JavaScript:;" @click="update(record)">编辑</a>&nbsp;
-          <a href="JavaScript:;" @click="remove(record)">删除</a>
+          <a v-only-admin href="JavaScript:;" @click="update(record)">编辑</a>&nbsp;
+          <a v-only-admin href="JavaScript:;" @click="remove(record)">删除</a>
         </template>
 
         <template #count="data">

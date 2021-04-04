@@ -6,7 +6,7 @@ const routes = [
   {
     path: '/auth',
     name: 'Auth',
-    component: () => import(/* webpackChunkName:'auth' */ '../views/Auth/index.vue'),
+    component: () => import( '../views/Auth/index.vue'),
   },
   {
     path: '/',
@@ -41,6 +41,7 @@ router.beforeEach((to, from, next) => {
   if(!window.characterInfo) {
     store.dispatch('getCharacterInfo');
   }
+  store.dispatch('getUserInfo');
   next();
 
 });
